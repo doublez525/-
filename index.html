@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>给你的心动时刻</title>
+    <title>写给 zz 的心动时刻</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet" />
@@ -18,21 +18,19 @@
       <section class="card" id="card">
         <p class="eyebrow">A LITTLE LOVE NOTE</p>
         <div class="heart-mark" aria-hidden="true">♥</div>
-        <h1>把名字写在<br /><em>心动里</em></h1>
-        <p class="intro">输入那个让你嘴角上扬的名字，<br />让爱意在这一刻盛开。</p>
+        <h1>这份心动，<br /><em>写给 zz</em></h1>
+        <p class="intro">有些名字不必写下，<br />因为早已藏在心里。</p>
 
-        <form id="love-form">
-          <label class="sr-only" for="name-input">名字</label>
-          <input id="name-input" type="text" maxlength="20" placeholder="写下 TA 的名字" autocomplete="off" />
-          <button type="submit">点亮爱心 <span>→</span></button>
-        </form>
-        <p class="hint">每一个名字，都值得被温柔以待</p>
+        <button type="button" id="reveal-button">点亮爱心 <span>→</span></button>
+        <p class="hint">这一刻的爱意，只属于 zz</p>
       </section>
 
-      <section class="love-message" id="love-message" aria-live="polite" aria-hidden="true"
-        <h2><span id="display-name"></span><br />愿你被爱意包围</h2>
+      <section class="love-message" id="love-message" aria-live="polite" aria-hidden="true">
+        <p class="eyebrow">FOR ZZ, WITH ALL MY HEART</p>
+        <div class="big-heart">♥</div>
+        <h2>zz<br />愿你被爱意包围</h2>
         <p>今天、明天，以及每一个平凡又闪亮的日子。</p>
-        <button class="again" id="again-button">再写一个名字</button>
+        <button class="again" id="again-button">再看一次</button>
       </section>
 
       <div class="heart-field" id="heart-field" aria-hidden="true"></div>
