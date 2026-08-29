@@ -6,6 +6,7 @@ const displayName = document.querySelector('#display-name');
 const again = document.querySelector('#again-button');
 
 let heartTimer;
+let heartTimeouts = [];
 const colors = ['#e53861', '#f05a7b', '#ff7b91', '#d91d53', '#f4a2b3', '#ee4266'];
 
 function makeHeart() {
@@ -25,12 +26,16 @@ function makeHeart() {
 function clearHearts() {
   clearInterval(heartTimer);
   heartTimer = undefined;
+  heartTimeouts.forEach(clearTimeout);
+  heartTimeouts = [];
   field.replaceChildren();
 }
 
 function fillHearts() {
   clearHearts();
-  for (let i = 0; i < 62; i += 1) setTimeout(makeHeart, i * 38);
+  for (let i = 0; i < 62; i += 1) {
+    heartTimeouts.push(setTimeout(makeHeart, i * 38));
+  }
   heartTimer = setInterval(() => { for (let i = 0; i < 3; i += 1) makeHeart(); }, 260);
 }
 
