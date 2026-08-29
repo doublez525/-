@@ -17,4 +17,4 @@ button { cursor:pointer; border:0; border-radius:2px; padding:14px 20px; color:w
 .active .card { opacity:0; transform:scale(.9); pointer-events:none; }.active .love-message { opacity:1; transform:scale(1); pointer-events:auto; }
 @keyframes pulse { 50% { transform:scale(1.12); } } @keyframes float-up { 0% { transform:translate(0,0) rotate(0); opacity:0; } 10% { opacity:.95; } 100% { transform:translate(var(--drift),-120vh) rotate(25deg); opacity:0; } }
 .sr-only { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0,0,0,0); }
-@media (max-width:480px) { .card { padding:44px 25px 35px; } }
+@media (max-width:520px) { .card { padding:44px 25px 35px; } }
