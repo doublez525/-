@@ -1,0 +1,48 @@
+const form = document.querySelector('#love-form');
+const input = document.querySelector('#name-input');
+const scene = document.querySelector('.scene');
+const field = document.querySelector('#heart-field');
+const displayName = document.querySelector('#display-name');
+const again = document.querySelector('#again-button');
+
+let heartTimer;
+const colors = ['#e53861', '#f05a7b', '#ff7b91', '#d91d53', '#f4a2b3', '#ee4266'];
+
+function makeHeart() {
+  const heart = document.createElement('span');
+  heart.className = 'flying-heart';
+  heart.textContent = '♥';
+  heart.style.setProperty('--x', `${Math.random() * 100}vw`);
+  heart.style.setProperty('--size', `${18 + Math.random() * 42}px`);
+  heart.style.setProperty('--color', colors[Math.floor(Math.random() * colors.length)]);
+  heart.style.setProperty('--time', `${3.6 + Math.random() * 2.7}s`);
+  heart.style.setProperty('--delay', `${Math.random() * .35}s`);
+  heart.style.setProperty('--drift', `${-120 + Math.random() * 240}px`);
+  field.appendChild(heart);
+  heart.addEventListener('animationend', () => heart.remove());
+}
+
+function fillHearts() {
+  for (let i = 0; i < 62; i += 1) setTimeout(makeHeart, i * 38);
+  heartTimer = setInterval(() => { for (let i = 0; i < 3; i += 1) makeHeart(); }, 260);
+}
+
+form.addEventListener('submit', event => {
+  event.preventDefault();
+  const name = input.value.trim();
+  if (!name) { input.focus(); input.placeholder = '先写下一个名字吧'; return; }
+  displayName.textContent = name;
+  scene.classList.add('active');
+  document.querySelector('#love-message').setAttribute('aria-hidden', 'false');
+  fillHearts();
+});
+
+again.addEventListener('click', () => {
+  clearInterval(heartTimer);
+  field.replaceChildren();
+  scene.classList.remove('active');
+  document.querySelector('#love-message').setAttribute('aria-hidden', 'true');
+  input.value = '';
+  input.placeholder = '写下 TA 的名字';
+  setTimeout(() => input.focus(), 400);
+});
