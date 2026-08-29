@@ -1,9 +1,8 @@
-const form = document.querySelector('#love-form');
-const input = document.querySelector('#name-input');
 const scene = document.querySelector('.scene');
 const field = document.querySelector('#heart-field');
-const displayName = document.querySelector('#display-name');
+const reveal = document.querySelector('#reveal-button');
 const again = document.querySelector('#again-button');
+const loveMessage = document.querySelector('#love-message');
 
 let heartTimer;
 let heartTimeouts = [];
@@ -39,21 +38,15 @@ function fillHearts() {
   heartTimer = setInterval(() => { for (let i = 0; i < 3; i += 1) makeHeart(); }, 260);
 }
 
-form.addEventListener('submit', event => {
-  event.preventDefault();
-  const name = input.value.trim();
-  if (!name) { input.focus(); input.placeholder = '先写下一个名字吧'; return; }
-  displayName.textContent = name;
+reveal.addEventListener('click', () => {
   scene.classList.add('active');
-  document.querySelector('#love-message').setAttribute('aria-hidden', 'false');
+  loveMessage.setAttribute('aria-hidden', 'false');
   fillHearts();
 });
 
 again.addEventListener('click', () => {
   clearHearts();
   scene.classList.remove('active');
-  document.querySelector('#love-message').setAttribute('aria-hidden', 'true');
-  input.value = '';
-  input.placeholder = '写下 TA 的名字';
-  setTimeout(() => input.focus(), 400);
+  loveMessage.setAttribute('aria-hidden', 'true');
+  setTimeout(() => reveal.focus(), 400);
 });
