@@ -22,7 +22,14 @@ function makeHeart() {
   heart.addEventListener('animationend', () => heart.remove());
 }
 
+function clearHearts() {
+  clearInterval(heartTimer);
+  heartTimer = undefined;
+  field.replaceChildren();
+}
+
 function fillHearts() {
+  clearHearts();
   for (let i = 0; i < 62; i += 1) setTimeout(makeHeart, i * 38);
   heartTimer = setInterval(() => { for (let i = 0; i < 3; i += 1) makeHeart(); }, 260);
 }
@@ -38,8 +45,7 @@ form.addEventListener('submit', event => {
 });
 
 again.addEventListener('click', () => {
-  clearInterval(heartTimer);
-  field.replaceChildren();
+  clearHearts();
   scene.classList.remove('active');
   document.querySelector('#love-message').setAttribute('aria-hidden', 'true');
   input.value = '';
